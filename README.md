@@ -2,10 +2,24 @@
 
 module purge
 
-module load module load openmpi4/4.1.4
+module load openmpi4/4.1.4
+
+conda deactivate
+
+# Bisa ditaro di .bashrc tapi harus hati hati
+
+export mpignu=/opt/ohpc/pub/mpi/openmpi4-gnu12/4.1.4
+
+export LD_LIBRARY_PATH=${mpignu}/lib:$LD_LIBRARY_PATH
+
+export PATH=${mpignu}/include:$PATH
+
+# download swan
 
 git clone https://gitlab.tudelft.nl/citg/wavemodels/swan.git && cd swan
 
 mkdir build && cd build
 
-conda install conda-forge::ninja
+cmake .. -G "Unix Makefiles"
+
+make
