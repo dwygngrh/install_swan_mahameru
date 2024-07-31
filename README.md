@@ -4,6 +4,8 @@ module purge
 
 module load openmpi4/4.1.4
 
+module load cmake/3.24.2
+
 conda deactivate
 
 # Bisa ditaro di .bashrc tapi harus hati hati
@@ -23,3 +25,9 @@ mkdir build && cd build
 cmake .. -G "Unix Makefiles"
 
 make
+
+cmake --install . --prefix /mgpfs/home/dwiy008/swan/install   # ganti dwiy008 dengan username pak agus dendy
+
+# instalasi selesai
+
+
